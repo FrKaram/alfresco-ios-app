@@ -49,7 +49,8 @@
         return [obj2 compare:obj1];
     }];
     
-    self.tasksAfterFiltering = [[filteredTasks sortedArrayUsingDescriptors:@[prioritySortDescriptor, dueDateSortDescriptor]] mutableCopy];
+    //self.tasksAfterFiltering = [[filteredTasks sortedArrayUsingDescriptors:@[prioritySortDescriptor, dueDateSortDescriptor]] mutableCopy];
+    self.tasksAfterFiltering = self.tasksBeforeFiltering;
 }
 
 - (void)removeTasks:(NSArray *)tasks

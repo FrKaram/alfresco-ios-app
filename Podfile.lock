@@ -1,4 +1,5 @@
 PODS:
+  - DownPicker (0.1.34)
   - Google/Analytics (1.3.2):
     - Google/Core
     - GoogleAnalytics (= 3.13.0)
@@ -29,17 +30,32 @@ PODS:
   - Realm/Headers (2.0.2)
 
 DEPENDENCIES:
+  - DownPicker
   - Google/Analytics (from `http://alfresco.github.io/alfresco-ios-app/Google.podspec.json`)
   - HockeySDK (~> 3.8)
   - MBProgressHUD (~> 1.0)
   - NJKWebViewProgress (~> 0.2)
   - Realm (~> 2.0.2)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DownPicker
+    - GoogleAnalytics
+    - GoogleInterchangeUtilities
+    - GoogleNetworkingUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - HockeySDK
+    - MBProgressHUD
+    - NJKWebViewProgress
+    - Realm
+
 EXTERNAL SOURCES:
   Google:
     :podspec: http://alfresco.github.io/alfresco-ios-app/Google.podspec.json
 
 SPEC CHECKSUMS:
+  DownPicker: c00ea63f08ae82116cc93d0eba74e86bf3d4c68e
   Google: dde0f3de4ad27d6c5ec54f00a533e235c6a4a5d5
   GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
   GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
@@ -51,6 +67,6 @@ SPEC CHECKSUMS:
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
 
-PODFILE CHECKSUM: c0ef36485ef75e29f4276117019f19f8ed108e94
+PODFILE CHECKSUM: 2fb4af6beb98ac63661671c1598c9c008ede9e16
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

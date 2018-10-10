@@ -5,8 +5,8 @@
     },
     "repository":
     {
-        "share-url": "http://ec2-176-34-173-67.eu-west-1.compute.amazonaws.com/share",
-        "cmis-url": "http://ec2-176-34-173-67.eu-west-1.compute.amazonaws.com/alfresco/cmisatom"
+        "share-url": "http://10.10.20.211/share",
+        "cmis-url": "http://10.10.20.211/alfresco/cmisatom"
     },
     "profiles":
     {

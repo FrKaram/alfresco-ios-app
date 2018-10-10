@@ -265,6 +265,8 @@ extern NSString * const kActivitiInviteAcceptedTask;
 extern NSString * const kJBPMInviteRejectedTask;
 extern NSString * const kActivitiInviteRejectedTask;
 
+//Add KS2
+
 // Google Quickoffice
 extern NSString * const kQuickofficeApplicationSecretUUIDKey;
 extern NSString * const kQuickofficeApplicationInfoKey;

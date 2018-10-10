@@ -30,6 +30,9 @@
 #import "UniversalDevice.h"
 #import "PeoplePicker.h"
 #import "WorkflowHelper.h"
+#import "DownPicker.h"
+#import "actionChoice.h"
+
 
 static CGFloat const kMaxCommentTextViewHeight = 60.0f;
 static UILayoutPriority const kHighPriority = 950;
@@ -66,6 +69,14 @@ static UILayoutPriority const kLowPriority = 250;
 @property (nonatomic, weak) IBOutlet UIButton *rejectButton;
 @property (nonatomic, weak) IBOutlet UIButton *cancelButton;
 
+@property (nonatomic, weak) IBOutlet UITextField *actionTextField;
+@property (strong, nonatomic) DownPicker *downPicker;
+@property NSMutableDictionary *actionDictionary;
+@property (nonatomic, weak) IBOutlet UIButton *validateButton;
+
+@end
+
+@implementation actionChoice
 @end
 
 @implementation TaskDetailsViewController
@@ -116,6 +127,8 @@ static UILayoutPriority const kLowPriority = 250;
     // configure the view
     [self configure];
     
+    //TODO : Reassign on KS2 tasks ? What about Android version ?
+    
     // Add reassign button for tasks, but not tasks that are invitations.
     if (self.task && (![self isAnInvitePendingTask:self.task] && ![self isAnInviteAcceptedOrRejectedTask:self.task]))
     {
@@ -132,12 +145,14 @@ static UILayoutPriority const kLowPriority = 250;
     
     // Localise UI
     [self localiseUI];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+   
     [[AnalyticsManager sharedManager] trackScreenWithName:kAnalyticsViewTaskDetails];
 }
 
@@ -174,6 +189,8 @@ static UILayoutPriority const kLowPriority = 250;
 {
     [self createTaskHeaderView];
     
+    self.actionDictionary = [[NSMutableDictionary alloc] init];
+    
     TasksAndAttachmentsViewController *attachmentViewController = nil;
     
     if (self.isDisplayingTask)
@@ -182,6 +199,80 @@ static UILayoutPriority const kLowPriority = 250;
          * Task-oriented view
          */
         
+        if ([self.task.type hasPrefix:@"supplierinvoice"])
+        {
+            actionChoice *choice1 = [[actionChoice alloc] init];
+            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
+            choice1.actionValue = @"Approve";
+            choice1.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
+            self.actionDictionary[choice1.actionName] = choice1;
+            
+            actionChoice *choice3 = [[actionChoice alloc] init];
+            choice3.actionName = @"Litigation";
+            choice3.actionValue = @"Litigation";
+            choice3.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
+            self.actionDictionary[choice3.actionName] = choice3;
+            
+            actionChoice *choice4 = [[actionChoice alloc] init];
+            choice4.actionName = @"ResendToLAD";
+            choice4.actionValue = @"ResendToLAD";
+            choice4.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
+            self.actionDictionary[choice4.actionName] = choice4;
+            
+            actionChoice *choice2 = [[actionChoice alloc] init];
+            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
+            choice2.actionValue = @"Reject";
+            choice2.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
+            self.actionDictionary[choice2.actionName] = choice2;
+           
+        }
+        else if ([self isAnInvitePendingTask:self.task])
+        {
+            actionChoice *choice1 = [[actionChoice alloc] init];
+            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
+            choice1.actionValue = [kAlfrescoWorkflowTaskTransitionAccept lowercaseString];
+            choice1.actionPropertyName = kAlfrescoWorkflowVariableTaskInvitePendingOutcome;
+            self.actionDictionary[choice1.actionName] = choice1;
+            
+            actionChoice *choice2 = [[actionChoice alloc] init];
+            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
+            choice2.actionValue = [kAlfrescoWorkflowTaskTransitionReject lowercaseString];
+            choice2.actionPropertyName = kAlfrescoWorkflowVariableTaskInvitePendingOutcome;
+            self.actionDictionary[choice2.actionName] = choice2;
+        }
+        else if ([self isAReviewTask:self.task])
+        {
+            actionChoice *choice1 = [[actionChoice alloc] init];
+            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
+            choice1.actionValue = [kAlfrescoWorkflowTaskTransitionApprove lowercaseString];
+            choice1.actionPropertyName = kAlfrescoWorkflowVariableTaskReviewOutcome;
+            self.actionDictionary[choice1.actionName] = choice1;
+            
+            actionChoice *choice2 = [[actionChoice alloc] init];
+            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
+            choice2.actionValue = [kAlfrescoWorkflowTaskTransitionReject lowercaseString];
+            choice2.actionPropertyName = kAlfrescoWorkflowVariableTaskReviewOutcome;
+            self.actionDictionary[choice2.actionName] = choice2;
+        }
+        else
+        {
+            actionChoice *choice1 = [[actionChoice alloc] init];
+            choice1.actionName = NSLocalizedString(@"task.transition.done", @"Done");
+            choice1.actionValue = @"";
+            choice1.actionPropertyName = @"";
+            self.actionDictionary[choice1.actionName] = choice1;
+        }
+     
+        NSMutableArray* choiceArray = [[NSMutableArray alloc] init];
+        for(id key in [self.actionDictionary allKeys]) {
+            actionChoice *c = [self.actionDictionary objectForKey:key];
+            [choiceArray addObject:c.actionName];
+        }
+        
+        self.downPicker = [[DownPicker alloc] initWithTextField:self.actionTextField withData:choiceArray];
+        self.downPicker.shouldDisplayCancelButton = NO;
+        self.downPicker.selectedIndex = 0;
+
         [self.workflowService retrieveProcessWithIdentifier:self.task.processIdentifier completionBlock:^(AlfrescoWorkflowProcess *process, NSError *error) {
             if (process && self.taskHeaderView)
             {
@@ -193,7 +284,7 @@ static UILayoutPriority const kLowPriority = 250;
         [self.taskHeaderView configureViewForTask:self.task];
         
         // configure the transition buttons
-        [self configureTransitionButtonsForTask:self.task];
+        //[self configureTransitionButtonsForTask:self.task];
         
         // init the attachment controller
         attachmentViewController = [[TasksAndAttachmentsViewController alloc] initWithTask:self.task session:self.session];
@@ -206,7 +297,7 @@ static UILayoutPriority const kLowPriority = 250;
         /**
          * Process-oriented view
          */
-
+        
         // configure the header view for the process
         [self.taskHeaderView configureViewForProcess:self.process];
         
@@ -237,6 +328,7 @@ static UILayoutPriority const kLowPriority = 250;
     self.textView.layer.borderWidth = 1;
 }
 
+/*
 - (void)configureTransitionButtonsForTask:(AlfrescoWorkflowTask *)task
 {
     if ([self shouldDisplayApproveAndRejectButtonsForTask:task])
@@ -257,7 +349,7 @@ static UILayoutPriority const kLowPriority = 250;
 
     [self.view layoutIfNeeded];
 }
-
+*/
 - (BOOL)isAnInvitePendingTask:(AlfrescoWorkflowTask *)task
 {
     return [task.type isEqualToString:kActivitiInvitePendingTask] || [task.type isEqualToString:kJBPMInvitePendingTask];
@@ -385,6 +477,10 @@ static UILayoutPriority const kLowPriority = 250;
     self.doneButton.enabled = enabled;
     self.approveButton.enabled = enabled;
     self.rejectButton.enabled = enabled;
+    
+    self.actionTextField.enabled = enabled;
+    self.downPicker.enabled = enabled;
+    self.validateButton.enabled = enabled;
 }
 
 - (void)cancelCommentAction:(id)sender
@@ -403,6 +499,32 @@ static UILayoutPriority const kLowPriority = 250;
 
 #pragma mark - IBActions
 
+- (IBAction)validateButtonClick:(id)sender {
+    
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];;
+    
+    NSString* selectedValue = [self.downPicker text];
+    actionChoice *A = self.actionDictionary[selectedValue];
+    
+    if (![A.actionPropertyName isEqualToString: @""])
+    {
+        properties[A.actionPropertyName] = A.actionValue;
+    }
+
+    if ([WorkflowHelper isJBPMTask:self.task])
+    {
+        // JBPM tasks need to have the transitions property set appropriately
+        properties[kAlfrescoWorkflowVariableTaskTransition] = [A.actionValue lowercaseString];
+    }
+    
+    if (self.textView.hasText)
+    {
+        properties[kAlfrescoWorkflowVariableTaskComment] = self.textView.text;
+    }
+    
+    [self completeTaskWithProperties:properties];
+}
+
 - (IBAction)pressedDoneButton:(id)sender
 {
     NSDictionary *properties = nil;
@@ -418,6 +540,7 @@ static UILayoutPriority const kLowPriority = 250;
 - (IBAction)pressedApproveButton:(id)sender
 {
     NSMutableDictionary *properties = nil;
+    //
     if ([self isAnInvitePendingTask:self.task])
     {
         properties = [@{kAlfrescoWorkflowVariableTaskInvitePendingOutcome : [kAlfrescoWorkflowTaskTransitionAccept lowercaseString]} mutableCopy];
@@ -444,6 +567,7 @@ static UILayoutPriority const kLowPriority = 250;
 - (IBAction)pressedRejectButton:(id)sender
 {
     NSMutableDictionary *properties = nil;
+    //https://stackoverflow.com/questions/13607007/what-is-and-in-objective-c
     if ([self isAnInvitePendingTask:self.task])
     {
         properties = [@{kAlfrescoWorkflowVariableTaskInvitePendingOutcome : [kAlfrescoWorkflowTaskTransitionReject lowercaseString]} mutableCopy];
@@ -529,6 +653,28 @@ static UILayoutPriority const kLowPriority = 250;
         displayErrorMessage([NSString stringWithFormat:NSLocalizedString(@"error.workflow.unable.to.reassign.task", @"Unable to reassign task"),
                              NSLocalizedString(@"error.generic.title", @"An error occurred")]);
     }
+}
+
+// The number of columns of data
+- (long)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (long)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 0;//_pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return NULL;//_pickerData[row];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return false;
 }
 
 @end

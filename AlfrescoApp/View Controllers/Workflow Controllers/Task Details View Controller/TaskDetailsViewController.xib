@@ -1,12 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskDetailsViewController">
             <connections>
+                <outlet property="actionTextField" destination="auX-6r-v5F" id="Lla-xY-Hqo"/>
                 <outlet property="approveButton" destination="fJO-Dk-RIK" id="syQ-a3-gks"/>
                 <outlet property="bottomSpacingOfTextViewContainerConstraint" destination="59w-B3-odL" id="J4n-EG-ak4"/>
                 <outlet property="cancelButton" destination="cA0-LA-mMm" id="wSr-P2-z7K"/>
@@ -17,31 +22,32 @@
                 <outlet property="textView" destination="7Ct-FG-PHJ" id="Y4g-1o-b0v"/>
                 <outlet property="textViewContainerHeightConstraint" destination="NCR-oh-o7O" id="Alj-ri-c28"/>
                 <outlet property="trailingSpaceFromCommentTextToContainerConstraint" destination="yyU-To-bxY" id="pQh-GN-w8E"/>
+                <outlet property="validateButton" destination="sWy-bQ-KCa" id="W8m-tX-A18"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaX-5e-dWJ" userLabel="Header View">
-                    <rect key="frame" x="8" y="8" width="304" height="85"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="8" y="8" width="359" height="85"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="JhH-aS-ok8"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dY-vPN" userLabel="Main Container">
-                    <rect key="frame" x="0.0" y="101" width="320" height="387"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="101" width="375" height="486"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8a-gk-Zub" userLabel="Comments Container">
-                    <rect key="frame" x="0.0" y="488" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" text="ADD COMMENT" translatesAutoresizingMaskIntoConstraints="NO" id="7Ct-FG-PHJ" customClass="TextView">
-                            <rect key="frame" x="8" y="4" width="304" height="32"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="8" y="4" width="359" height="32"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="32" id="fSv-Qi-0I9"/>
                             </constraints>
@@ -52,78 +58,41 @@
                                 <outlet property="textViewDelegate" destination="-1" id="Xnf-zc-0X5"/>
                             </connections>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJO-Dk-RIK" userLabel="Approve Button">
-                            <rect key="frame" x="8" y="44" width="141" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="8HU-BM-3aj"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Tp3-HJ-Cfb"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="[APPROVE]">
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedApproveButton:" destination="-1" eventType="touchUpInside" id="yL7-zp-xhr"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-fd-lfJ" userLabel="Reject Button">
-                            <rect key="frame" x="171" y="44" width="141" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="Nya-r7-T1Q"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="[REJECT]">
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedRejectButton:" destination="-1" eventType="touchUpInside" id="Fe3-iS-HqE"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-dD-qp9" userLabel="Done Button">
-                            <rect key="frame" x="100" y="44" width="120" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="6jt-QO-HdF"/>
-                                <constraint firstAttribute="height" constant="32" id="yER-6V-5DR"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="[DONE]">
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedDoneButton:" destination="-1" eventType="touchUpInside" id="siQ-PK-Nfj"/>
-                            </connections>
-                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cA0-LA-mMm" userLabel="Cancel Button">
                             <rect key="frame" x="243" y="5" width="69" height="30"/>
                             <state key="normal" title="[CANCEL]">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="auX-6r-v5F">
+                            <rect key="frame" x="8" y="42" width="254" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-bQ-KCa">
+                            <rect key="frame" x="255" y="41" width="112" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="[VALIDATE]"/>
+                            <connections>
+                                <action selector="validateButtonClick:" destination="-1" eventType="touchUpInside" id="9sD-1o-aTQ"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="e1A-fd-lfJ" firstAttribute="width" secondItem="fJO-Dk-RIK" secondAttribute="width" id="0Di-k5-ZVN"/>
                         <constraint firstItem="7Ct-FG-PHJ" firstAttribute="top" secondItem="U8a-gk-Zub" secondAttribute="top" constant="4" id="0oW-pk-Pmg"/>
-                        <constraint firstAttribute="trailing" secondItem="e1A-fd-lfJ" secondAttribute="trailing" constant="8" id="18Y-eE-W3T"/>
-                        <constraint firstAttribute="bottom" secondItem="fJO-Dk-RIK" secondAttribute="bottom" constant="4" id="2sE-fZ-2r2"/>
-                        <constraint firstAttribute="bottom" secondItem="e1A-fd-lfJ" secondAttribute="bottom" constant="4" id="4di-oA-8U4"/>
-                        <constraint firstAttribute="centerX" secondItem="1JN-dD-qp9" secondAttribute="centerX" id="8zM-Bg-bnt"/>
                         <constraint firstAttribute="trailing" secondItem="cA0-LA-mMm" secondAttribute="trailing" constant="8" id="Abk-hC-txJ"/>
-                        <constraint firstItem="1JN-dD-qp9" firstAttribute="top" secondItem="7Ct-FG-PHJ" secondAttribute="bottom" priority="750" constant="8" id="C5s-uW-29j"/>
                         <constraint firstItem="cA0-LA-mMm" firstAttribute="leading" secondItem="7Ct-FG-PHJ" secondAttribute="trailing" priority="500" constant="10" id="Dd9-Ta-LfZ"/>
                         <constraint firstItem="7Ct-FG-PHJ" firstAttribute="leading" secondItem="U8a-gk-Zub" secondAttribute="leading" constant="8" id="LsE-AA-xll"/>
                         <constraint firstAttribute="height" constant="80" id="NCR-oh-o7O"/>
                         <constraint firstItem="7Ct-FG-PHJ" firstAttribute="centerY" secondItem="cA0-LA-mMm" secondAttribute="centerY" id="Nlb-lD-qmL"/>
-                        <constraint firstItem="e1A-fd-lfJ" firstAttribute="top" secondItem="7Ct-FG-PHJ" secondAttribute="bottom" priority="750" constant="8" id="QCk-E4-SrQ"/>
-                        <constraint firstItem="fJO-Dk-RIK" firstAttribute="top" secondItem="7Ct-FG-PHJ" secondAttribute="bottom" priority="750" constant="8" id="bSH-pY-WGY"/>
-                        <constraint firstAttribute="bottom" secondItem="1JN-dD-qp9" secondAttribute="bottom" constant="4" id="fGe-mZ-wf7"/>
-                        <constraint firstItem="fJO-Dk-RIK" firstAttribute="leading" secondItem="U8a-gk-Zub" secondAttribute="leading" constant="8" id="nSu-DP-6Gc"/>
-                        <constraint firstItem="e1A-fd-lfJ" firstAttribute="leading" secondItem="fJO-Dk-RIK" secondAttribute="trailing" constant="22" id="sqm-pB-hoI"/>
                         <constraint firstAttribute="trailing" secondItem="7Ct-FG-PHJ" secondAttribute="trailing" priority="750" constant="8" id="yyU-To-bxY"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="U8a-gk-Zub" secondAttribute="bottom" id="59w-B3-odL"/>
                 <constraint firstAttribute="trailing" secondItem="Xs0-dY-vPN" secondAttribute="trailing" id="FfE-MU-rX4"/>
@@ -137,6 +106,56 @@
                 <constraint firstItem="U8a-gk-Zub" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="zd2-Mk-SKD"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJO-Dk-RIK" userLabel="Approve Button">
+            <rect key="frame" x="0.0" y="0.0" width="168.5" height="32"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="32" id="8HU-BM-3aj"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Tp3-HJ-Cfb"/>
+            </constraints>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <state key="normal" title="[APPROVE]">
+                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <connections>
+                <action selector="pressedApproveButton:" destination="-1" eventType="touchUpInside" id="yL7-zp-xhr"/>
+            </connections>
+            <point key="canvasLocation" x="-392" y="332"/>
+        </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-fd-lfJ" userLabel="Reject Button">
+            <rect key="frame" x="0.0" y="0.0" width="62" height="32"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="32" id="Nya-r7-T1Q"/>
+            </constraints>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <state key="normal" title="[REJECT]">
+                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <connections>
+                <action selector="pressedRejectButton:" destination="-1" eventType="touchUpInside" id="Fe3-iS-HqE"/>
+            </connections>
+            <point key="canvasLocation" x="-460" y="393"/>
+        </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-dD-qp9" userLabel="Done Button">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
+            <constraints>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="6jt-QO-HdF"/>
+                <constraint firstAttribute="height" constant="32" id="yER-6V-5DR"/>
+            </constraints>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <state key="normal" title="[DONE]">
+                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            </state>
+            <connections>
+                <action selector="pressedDoneButton:" destination="-1" eventType="touchUpInside" id="siQ-PK-Nfj"/>
+            </connections>
+            <point key="canvasLocation" x="-431" y="237"/>
+        </button>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

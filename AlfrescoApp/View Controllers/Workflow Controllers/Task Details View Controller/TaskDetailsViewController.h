@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TaskDetailsViewController : UIViewController
+@interface TaskDetailsViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate>
 
 - (instancetype)initWithTask:(AlfrescoWorkflowTask *)task session:(id<AlfrescoSession>)session;
 - (instancetype)initWithProcess:(AlfrescoWorkflowProcess *)process session:(id<AlfrescoSession>)session;
