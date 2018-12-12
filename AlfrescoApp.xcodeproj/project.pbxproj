@@ -152,7 +152,6 @@
 		272962761B557BF90041C32D /* mainmenu-gallery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 272962721B557BF90041C32D /* mainmenu-gallery@2x.png */; };
 		272962771B557BF90041C32D /* mainmenu-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 272962731B557BF90041C32D /* mainmenu-grid.png */; };
 		272962781B557BF90041C32D /* mainmenu-grid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 272962741B557BF90041C32D /* mainmenu-grid@2x.png */; };
-		272C41D419C7AF2600DABBF0 /* libFlurry_5.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 272C41D319C7AF2600DABBF0 /* libFlurry_5.3.0.a */; };
 		272CC7BD19466B680009FADA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272CC7BC19466B680009FADA /* MapViewController.m */; };
 		272CC7C61946727A0009FADA /* AlfrescoDocument+MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 272CC7C51946727A0009FADA /* AlfrescoDocument+MapAnnotation.m */; };
 		272CC7CD194690AD0009FADA /* segment-icon-comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 272CC7C8194690AD0009FADA /* segment-icon-comments@2x.png */; };
@@ -311,6 +310,7 @@
 		2BFE12981AC2E734000EB19D /* circle_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFE12941AC2E734000EB19D /* circle_tick@2x.png */; };
 		2BFECF581BB57D660007ABA2 /* SitesTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFECF571BB57D660007ABA2 /* SitesTableListViewController.m */; };
 		2BFECF5F1BB587310007ABA2 /* SitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFECF5E1BB587310007ABA2 /* SitesViewController.m */; };
+		44E14D8C21C10AA50019CD3B /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 44E14D8B21C10AA50019CD3B /* Notes */; };
 		659CA43A2CE38651500FF748 /* libPods-AlfrescoDocumentPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A544CBC5CD8C7DE64C27C0EB /* libPods-AlfrescoDocumentPicker.a */; };
 		6C2913BE59154B74A223E37F /* libPods-AlfrescoApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECC79C36D4668D49BB1C70B /* libPods-AlfrescoApp.a */; };
 		7300DE9518EF010F00F5F57E /* FullScreenAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7300DE9418EF010F00F5F57E /* FullScreenAnimationController.m */; };
@@ -1335,8 +1335,10 @@
 		2BFECF5D1BB587310007ABA2 /* SitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SitesViewController.h; sourceTree = "<group>"; };
 		2BFECF5E1BB587310007ABA2 /* SitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SitesViewController.m; sourceTree = "<group>"; };
 		3ECC79C36D4668D49BB1C70B /* libPods-AlfrescoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AlfrescoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		448004C821C179B00045695C /* AlfrescoApp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AlfrescoApp; sourceTree = "<group>"; };
 		4495FEB5216B4006002C22B1 /* actionChoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = actionChoice.h; sourceTree = "<group>"; };
 		44C129C2E866DB088D73003D /* Pods-AlfrescoDocumentPicker.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlfrescoDocumentPicker.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-AlfrescoDocumentPicker/Pods-AlfrescoDocumentPicker.adhoc.xcconfig"; sourceTree = "<group>"; };
+		44E14D8B21C10AA50019CD3B /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		557E8155997D9FC30FA5A23E /* Pods-AlfrescoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlfrescoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlfrescoApp/Pods-AlfrescoApp.release.xcconfig"; sourceTree = "<group>"; };
 		7300DE9318EF010F00F5F57E /* FullScreenAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenAnimationController.h; sourceTree = "<group>"; };
 		7300DE9418EF010F00F5F57E /* FullScreenAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenAnimationController.m; sourceTree = "<group>"; };
@@ -1968,7 +1970,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				734CC3B11A6FBC90005D148E /* libAlfrescoKit.a in Frameworks */,
-				272C41D419C7AF2600DABBF0 /* libFlurry_5.3.0.a in Frameworks */,
 				6C2913BE59154B74A223E37F /* libPods-AlfrescoApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2882,6 +2883,7 @@
 		7373B4EC17A66E9400869949 = {
 			isa = PBXGroup;
 			children = (
+				44E14D8B21C10AA50019CD3B /* Notes */,
 				7373B4FE17A66E9400869949 /* AlfrescoApp */,
 				08E89C9E17E7593B006936DF /* AlfrescoApp Tests */,
 				734CC3ED1A700808005D148E /* AlfrescoDocumentPicker */,
@@ -2906,6 +2908,7 @@
 		7373B4F717A66E9400869949 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				448004C821C179B00045695C /* AlfrescoApp */,
 				73697BB41A9B8DDA009F10BA /* MobileCoreServices.framework */,
 				73697BB21A9B8DC0009F10BA /* SystemConfiguration.framework */,
 				3ECC79C36D4668D49BB1C70B /* libPods-AlfrescoApp.a */,
@@ -4335,14 +4338,18 @@
 				ORGANIZATIONNAME = Alfresco;
 				TargetAttributes = {
 					08E89C9817E7593B006936DF = {
-						DevelopmentTeam = W8N95J537P;
+						DevelopmentTeam = FN92383Y8P;
+						ProvisioningStyle = Manual;
 						TestTargetID = 7373B4F417A66E9400869949;
 					};
 					734CC3EB1A700808005D148E = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = W8N95J537P;
+						DevelopmentTeam = FN92383Y8P;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -4353,16 +4360,19 @@
 					};
 					734CC3F91A700808005D148E = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = W8N95J537P;
+						DevelopmentTeam = FN92383Y8P;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
 					};
 					7373B4F417A66E9400869949 = {
-						DevelopmentTeam = W8N95J537P;
+						DevelopmentTeam = FN92383Y8P;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -4533,6 +4543,7 @@
 				7390619B189676F600B1920C /* ButtonBarArrowDown.png in Resources */,
 				73B95A6217A68B7E0099FB84 /* AboutLogo@2x.png in Resources */,
 				27E111281BA2F47C00F230EE /* mainmenu-folder@2x.png in Resources */,
+				44E14D8C21C10AA50019CD3B /* Notes in Resources */,
 				738BE95C1A962AFB006264E5 /* HelpURLKeys.plist in Resources */,
 				2715E03719300C520049FA32 /* Images.xcassets in Resources */,
 				73B95A6317A68B7E0099FB84 /* AboutLogo@2x~ipad.png in Resources */,
@@ -5454,6 +5465,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlfrescoApp Tests/AlfrescoApp Tests-Prefix.pch";
@@ -5468,6 +5480,7 @@
 				INFOPLIST_FILE = "AlfrescoApp Tests/AlfrescoApp Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -5481,6 +5494,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5492,6 +5506,7 @@
 				INFOPLIST_FILE = "AlfrescoApp Tests/AlfrescoApp Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -5552,7 +5567,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "AlfrescoApp/Supporting Files/AlfrescoApp.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SOURCE_ROOT)/AlfrescoApp/Third\\ Party\\ Libraries/**",
@@ -5566,14 +5581,13 @@
 				INFOPLIST_FILE = "AlfrescoApp/Supporting Files/AlfrescoApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(TARGET_BUILD_DIR)",
-					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries/Flurry",
+					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alfresco.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2bafb3cc-3501-4577-9062-cef225d63457";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Mobile (X8Q) Ad Hoc Profile";
+				PROVISIONING_PROFILE = "576f70bb-bfe3-4f15-ae44-21327787a499";
+				PROVISIONING_PROFILE_SPECIFIER = "PP Main";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5587,6 +5601,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5598,6 +5613,7 @@
 				INFOPLIST_FILE = "AlfrescoApp Tests/AlfrescoApp Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -5612,8 +5628,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPicker/AlfrescoDocumentPicker.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlfrescoDocumentPicker/AlfrescoDocumentPicker-Prefix.pch";
@@ -5628,13 +5644,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = AlfrescoDocumentPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "587fddc6-cd8b-44ba-acb1-a01c5ef70b2e";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Document Picker Development";
+				PROVISIONING_PROFILE = "90078ca4-b892-4d56-89f6-e659013bff47";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -5649,7 +5664,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPicker/AlfrescoDocumentPicker.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5661,13 +5676,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = AlfrescoDocumentPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46dbb5be-012b-4a20-af1d-9525186c3454";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Document Picker (X8Q) App Store Profile";
+				PROVISIONING_PROFILE = "90078ca4-b892-4d56-89f6-e659013bff47";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -5682,7 +5696,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPicker/AlfrescoDocumentPicker.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5694,13 +5708,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = AlfrescoDocumentPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "567e89c7-fac5-48e0-ae5c-bb17a475bbb8";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Document Picker (X8Q) Ad Hoc Profile";
+				PROVISIONING_PROFILE = "90078ca4-b892-4d56-89f6-e659013bff47";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP";
 				SKIP_INSTALL = YES;
 			};
 			name = AdHoc;
@@ -5713,8 +5726,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -5734,10 +5747,10 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPickerFileProvider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8c316c84-e473-4964-8049-74abde67dbb7";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco File Provider Development";
+				PROVISIONING_PROFILE = "cbaa1cb5-930f-4dc5-bd69-ff70a620fabe";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP FP";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -5751,7 +5764,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider-Prefix.pch";
@@ -5768,10 +5781,10 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPickerFileProvider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8f0a98d-9d7a-420e-9fa0-8bb7ae2c9d51";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco File Provider (X8Q) App Store Profile";
+				PROVISIONING_PROFILE = "cbaa1cb5-930f-4dc5-bd69-ff70a620fabe";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP FP";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -5785,7 +5798,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "AlfrescoDocumentPickerFileProvider/AlfrescoDocumentPickerFileProvider-Prefix.pch";
@@ -5802,10 +5815,10 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alfresco.mobile.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication.AlfrescoDocumentPickerFileProvider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a0d336d4-1e69-434d-b0cd-e595d2b96bdf";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco File Provider (X8Q) Ad Hoc Profile";
+				PROVISIONING_PROFILE = "cbaa1cb5-930f-4dc5-bd69-ff70a620fabe";
+				PROVISIONING_PROFILE_SPECIFIER = "PP DP FP";
 				SKIP_INSTALL = YES;
 			};
 			name = AdHoc;
@@ -5911,8 +5924,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "AlfrescoApp/Supporting Files/AlfrescoApp.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SOURCE_ROOT)/AlfrescoApp/Third\\ Party\\ Libraries/**",
@@ -5926,14 +5939,13 @@
 				INFOPLIST_FILE = "AlfrescoApp/Supporting Files/AlfrescoApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(TARGET_BUILD_DIR)",
-					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries/Flurry",
+					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alfresco.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "25ae4d3b-6c1a-4a27-a511-a09146b86f72";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Mobile (X8Q) Development";
+				PROVISIONING_PROFILE = "576f70bb-bfe3-4f15-ae44-21327787a499";
+				PROVISIONING_PROFILE_SPECIFIER = "PP Main";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5947,7 +5959,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "AlfrescoApp/Supporting Files/AlfrescoApp.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = W8N95J537P;
+				DEVELOPMENT_TEAM = FN92383Y8P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SOURCE_ROOT)/AlfrescoApp/Third\\ Party\\ Libraries/**",
@@ -5960,15 +5972,14 @@
 				);
 				INFOPLIST_FILE = "AlfrescoApp/Supporting Files/AlfrescoApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries",
 					"$(inherited)",
-					"$(TARGET_BUILD_DIR)",
-					"$(PROJECT_DIR)/AlfrescoApp/Third\\ Party\\ Libraries/Flurry",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alfresco.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.ks2.mobileApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da10ba1b-cd14-4657-b520-6d637077845f";
-				PROVISIONING_PROFILE_SPECIFIER = "Alfresco Mobile (X8Q) App Store Profile";
+				PROVISIONING_PROFILE = "576f70bb-bfe3-4f15-ae44-21327787a499";
+				PROVISIONING_PROFILE_SPECIFIER = "PP Main";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
