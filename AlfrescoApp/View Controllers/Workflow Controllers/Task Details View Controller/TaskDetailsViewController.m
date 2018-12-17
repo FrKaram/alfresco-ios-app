@@ -62,6 +62,7 @@ static UILayoutPriority const kLowPriority = 250;
 @property (nonatomic, weak) IBOutlet UIView *taskHeaderViewContainer;
 // Container
 @property (nonatomic, weak) IBOutlet UIView *detailsContainerView;
+@property (nonatomic, weak) IBOutlet UIView *commentContainerView;
 // Comments
 @property (nonatomic, weak) IBOutlet TextView *textView;
 @property (nonatomic, weak) IBOutlet UIButton *doneButton;
@@ -70,13 +71,12 @@ static UILayoutPriority const kLowPriority = 250;
 @property (nonatomic, weak) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic, weak) IBOutlet UITextField *actionTextField;
-@property (strong, nonatomic) DownPicker *downPicker;
+@property (strong, nonatomic) DownPicker *actionSelectionPicker;
+@property (nonatomic, weak) IBOutlet UITextField *rejectReasonTextField;
+@property (strong, nonatomic) DownPicker *rejectReasonSelectionPicker;
 @property NSMutableDictionary *actionDictionary;
 @property (nonatomic, weak) IBOutlet UIButton *validateButton;
 
-@end
-
-@implementation actionChoice
 @end
 
 @implementation TaskDetailsViewController
@@ -161,6 +161,7 @@ static UILayoutPriority const kLowPriority = 250;
 - (void)localiseUI
 {
     self.textView.placeholderText = NSLocalizedString(@"tasks.textview.addcomment.placeholder", @"Add comment placeholder");
+    [self.validateButton setTitle:NSLocalizedString(@"Validate", @"Validate") forState:UIControlStateNormal];
     [self.cancelButton setTitle:NSLocalizedString(@"Cancel", @"Cancel") forState:UIControlStateNormal];
 }
 
@@ -199,80 +200,126 @@ static UILayoutPriority const kLowPriority = 250;
          * Task-oriented view
          */
         
+        
+        //handle action choices
         if ([self.task.type hasPrefix:@"supplierinvoice"])
         {
-            actionChoice *choice1 = [[actionChoice alloc] init];
-            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
-            choice1.actionValue = @"Approve";
-            choice1.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
-            self.actionDictionary[choice1.actionName] = choice1;
-            
-            actionChoice *choice3 = [[actionChoice alloc] init];
-            choice3.actionName = @"Litigation";
-            choice3.actionValue = @"Litigation";
-            choice3.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
-            self.actionDictionary[choice3.actionName] = choice3;
-            
-            actionChoice *choice4 = [[actionChoice alloc] init];
-            choice4.actionName = @"ResendToLAD";
-            choice4.actionValue = @"ResendToLAD";
-            choice4.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
-            self.actionDictionary[choice4.actionName] = choice4;
-            
-            actionChoice *choice2 = [[actionChoice alloc] init];
-            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
-            choice2.actionValue = @"Reject";
-            choice2.actionPropertyName = [NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"];
-            self.actionDictionary[choice2.actionName] = choice2;
-           
+            if ([self.task.type hasSuffix:@"buyerApprovalLevel1Task"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:@"Approve" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice2 = [[actionChoice alloc] init:@"Litigation" actionName:@"Litigation" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice2.actionName] = choice2;
+                
+                actionChoice *choice3 = [[actionChoice alloc] init:@"ResendToLAD" actionName:@"ResendToLAD" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice3.actionName] = choice3;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+                
+            }
+            else if ([self.task.type hasSuffix:@"buyerApprovalLevel2Task"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:@"Approve" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+            }
+            else if ([self.task.type hasSuffix:@"litigationHandlingTask"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:@"Resubmit" actionName:@"ReSubmit" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+            }
+            else if ([self.task.type hasSuffix:@"controllingApprovalTask"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:@"Approve" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+            }
+            else if ([self.task.type hasSuffix:@"accountingApprovalTask"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:@"Approve" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+            }
+            else if ([self.task.type hasSuffix:@"paymentTask"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:@"Payed" actionName:@"Payed" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+            }
+            else if ([self.task.type hasSuffix:@"buyerApprovalLevel1Task"])
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:@"Done" actionName:@"Done" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+            }
+            else
+            {
+                actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:@"Approve" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:false];
+                self.actionDictionary[choice1.actionName] = choice1;
+                
+                actionChoice *choice4 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:@"Reject" actionPropertyName:[NSString stringWithFormat:@"%@%@", self.task.type , @"Outcome"] requiresReason:true];
+                self.actionDictionary[choice4.actionName] = choice4;
+            }
         }
         else if ([self isAnInvitePendingTask:self.task])
         {
-            actionChoice *choice1 = [[actionChoice alloc] init];
-            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
-            choice1.actionValue = [kAlfrescoWorkflowTaskTransitionAccept lowercaseString];
-            choice1.actionPropertyName = kAlfrescoWorkflowVariableTaskInvitePendingOutcome;
+            actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:[kAlfrescoWorkflowTaskTransitionAccept lowercaseString] actionPropertyName:kAlfrescoWorkflowVariableTaskInvitePendingOutcome requiresReason:false];
             self.actionDictionary[choice1.actionName] = choice1;
             
-            actionChoice *choice2 = [[actionChoice alloc] init];
-            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
-            choice2.actionValue = [kAlfrescoWorkflowTaskTransitionReject lowercaseString];
-            choice2.actionPropertyName = kAlfrescoWorkflowVariableTaskInvitePendingOutcome;
+            actionChoice *choice2 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:[kAlfrescoWorkflowTaskTransitionReject lowercaseString] actionPropertyName:kAlfrescoWorkflowVariableTaskInvitePendingOutcome requiresReason:false];
             self.actionDictionary[choice2.actionName] = choice2;
         }
         else if ([self isAReviewTask:self.task])
         {
-            actionChoice *choice1 = [[actionChoice alloc] init];
-            choice1.actionName = NSLocalizedString(@"task.transition.approve", @"Approve");
-            choice1.actionValue = [kAlfrescoWorkflowTaskTransitionApprove lowercaseString];
-            choice1.actionPropertyName = kAlfrescoWorkflowVariableTaskReviewOutcome;
+           
+            actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.approve", @"Approve") actionName:[kAlfrescoWorkflowTaskTransitionApprove lowercaseString] actionPropertyName:kAlfrescoWorkflowVariableTaskReviewOutcome requiresReason:false];
             self.actionDictionary[choice1.actionName] = choice1;
             
-            actionChoice *choice2 = [[actionChoice alloc] init];
-            choice2.actionName = NSLocalizedString(@"task.transition.reject", @"Reject");
-            choice2.actionValue = [kAlfrescoWorkflowTaskTransitionReject lowercaseString];
-            choice2.actionPropertyName = kAlfrescoWorkflowVariableTaskReviewOutcome;
+            actionChoice *choice2 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.reject", @"Reject") actionName:[kAlfrescoWorkflowTaskTransitionReject lowercaseString] actionPropertyName:kAlfrescoWorkflowVariableTaskReviewOutcome requiresReason:false];
             self.actionDictionary[choice2.actionName] = choice2;
         }
         else
         {
-            actionChoice *choice1 = [[actionChoice alloc] init];
-            choice1.actionName = NSLocalizedString(@"task.transition.done", @"Done");
-            choice1.actionValue = @"";
-            choice1.actionPropertyName = @"";
+            actionChoice *choice1 = [[actionChoice alloc] init:NSLocalizedString(@"task.transition.done", @"Done") actionName:@"" actionPropertyName:@"" requiresReason:false];
             self.actionDictionary[choice1.actionName] = choice1;
         }
      
+        //Made choiceArray from actionDictionary to fill the downPicker
         NSMutableArray* choiceArray = [[NSMutableArray alloc] init];
         for(id key in [self.actionDictionary allKeys]) {
             actionChoice *c = [self.actionDictionary objectForKey:key];
             [choiceArray addObject:c.actionName];
         }
         
-        self.downPicker = [[DownPicker alloc] initWithTextField:self.actionTextField withData:choiceArray];
-        self.downPicker.shouldDisplayCancelButton = NO;
-        self.downPicker.selectedIndex = 0;
+        [choiceArray sortUsingSelector:@selector(caseInsensitiveCompare:)];
+        
+        self.actionSelectionPicker = [[DownPicker alloc] initWithTextField:self.actionTextField withData:choiceArray];
+        self.actionSelectionPicker.shouldDisplayCancelButton = NO;
+        self.actionSelectionPicker.selectedIndex = 0;
+        
+        [self.actionSelectionPicker addTarget:self action:@selector(dp_Selected:) forControlEvents:UIControlEventValueChanged];
 
+        //Handle reject reason
+        NSMutableArray* rejectReasonArray = [[NSMutableArray alloc] init];
+        [rejectReasonArray addObject:@"--- Sélectionner un motif en cas de rejet ---"];
+        [rejectReasonArray addObject:@"Ne nous concerne pas"];
+        [rejectReasonArray addObject:@"Marchandises ou prestations facturés non conformes"];
+        [rejectReasonArray addObject:@"Marchandises ou prestations déjà facturées"];
+        [rejectReasonArray addObject:@"Aucune sélection"];
+        
+        self.rejectReasonSelectionPicker = [[DownPicker alloc] initWithTextField:self.rejectReasonTextField withData:rejectReasonArray];
+        self.rejectReasonSelectionPicker.shouldDisplayCancelButton = NO;
+        self.rejectReasonSelectionPicker.selectedIndex = 0;
+        
         [self.workflowService retrieveProcessWithIdentifier:self.task.processIdentifier completionBlock:^(AlfrescoWorkflowProcess *process, NSError *error) {
             if (process && self.taskHeaderView)
             {
@@ -479,7 +526,7 @@ static UILayoutPriority const kLowPriority = 250;
     self.rejectButton.enabled = enabled;
     
     self.actionTextField.enabled = enabled;
-    self.downPicker.enabled = enabled;
+    self.actionSelectionPicker.enabled = enabled;
     self.validateButton.enabled = enabled;
 }
 
@@ -497,14 +544,55 @@ static UILayoutPriority const kLowPriority = 250;
     self.peoplePicker = peoplePicker;
 }
 
+-(void)dp_Selected:(id)dp {
+    NSString* selectedValue = [self.actionSelectionPicker text];
+    
+    actionChoice *A = self.actionDictionary[selectedValue];
+
+
+    if (A.requiresReason)
+    {
+        self.rejectReasonTextField.hidden = FALSE;
+    }
+    else{
+        self.rejectReasonTextField.hidden = YES;
+    }
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+            self.textViewContainerHeightConstraint.constant = 250;
+    }
+    else{
+        if (A.requiresReason)
+        {
+            self.textViewContainerHeightConstraint.constant = 120;
+        }
+        else{
+            self.textViewContainerHeightConstraint.constant = 80;
+        }
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)validateButtonClick:(id)sender {
     
-    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];;
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     
-    NSString* selectedValue = [self.downPicker text];
+    NSString* selectedValue = [self.actionSelectionPicker text];
     actionChoice *A = self.actionDictionary[selectedValue];
+    
+    if(A.requiresReason)
+    {
+        if (self.rejectReasonSelectionPicker.selectedIndex == 0)
+        {
+            return;
+        }
+        else
+        {
+            properties[@"rejectionReason"]  = [self.rejectReasonSelectionPicker text];
+        }
+    }
     
     if (![A.actionPropertyName isEqualToString: @""])
     {

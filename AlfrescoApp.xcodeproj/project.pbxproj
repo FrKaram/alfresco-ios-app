@@ -310,6 +310,7 @@
 		2BFE12981AC2E734000EB19D /* circle_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFE12941AC2E734000EB19D /* circle_tick@2x.png */; };
 		2BFECF581BB57D660007ABA2 /* SitesTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFECF571BB57D660007ABA2 /* SitesTableListViewController.m */; };
 		2BFECF5F1BB587310007ABA2 /* SitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFECF5E1BB587310007ABA2 /* SitesViewController.m */; };
+		44B71F1A21C859DE00449EF6 /* actionChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B71F1921C859DE00449EF6 /* actionChoice.m */; };
 		44E14D8C21C10AA50019CD3B /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 44E14D8B21C10AA50019CD3B /* Notes */; };
 		659CA43A2CE38651500FF748 /* libPods-AlfrescoDocumentPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A544CBC5CD8C7DE64C27C0EB /* libPods-AlfrescoDocumentPicker.a */; };
 		6C2913BE59154B74A223E37F /* libPods-AlfrescoApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECC79C36D4668D49BB1C70B /* libPods-AlfrescoApp.a */; };
@@ -974,7 +975,7 @@
 		08E1EA0C18DB057900F9052F /* TaskHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskHeaderView.m; sourceTree = "<group>"; };
 		08E1EA0D18DB057900F9052F /* TaskHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHeaderView.xib; sourceTree = "<group>"; };
 		08E1EA0E18DB057900F9052F /* TaskDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailsViewController.h; sourceTree = "<group>"; };
-		08E1EA0F18DB057900F9052F /* TaskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TaskDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		08E1EA0F18DB057900F9052F /* TaskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TaskDetailsViewController.m; sourceTree = "<group>"; };
 		08E1EA1018DB057900F9052F /* TaskDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailsViewController.xib; sourceTree = "<group>"; };
 		08E1EA1118DB057900F9052F /* TaskDetailsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TaskDetailsViewController~ipad.xib"; sourceTree = "<group>"; };
 		08E1EA1418DB057900F9052F /* TasksCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksCell.h; sourceTree = "<group>"; };
@@ -1337,6 +1338,7 @@
 		3ECC79C36D4668D49BB1C70B /* libPods-AlfrescoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AlfrescoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		448004C821C179B00045695C /* AlfrescoApp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AlfrescoApp; sourceTree = "<group>"; };
 		4495FEB5216B4006002C22B1 /* actionChoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = actionChoice.h; sourceTree = "<group>"; };
+		44B71F1921C859DE00449EF6 /* actionChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = actionChoice.m; sourceTree = "<group>"; };
 		44C129C2E866DB088D73003D /* Pods-AlfrescoDocumentPicker.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlfrescoDocumentPicker.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-AlfrescoDocumentPicker/Pods-AlfrescoDocumentPicker.adhoc.xcconfig"; sourceTree = "<group>"; };
 		44E14D8B21C10AA50019CD3B /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		557E8155997D9FC30FA5A23E /* Pods-AlfrescoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlfrescoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlfrescoApp/Pods-AlfrescoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -2176,6 +2178,7 @@
 		08E1EA0918DB057900F9052F /* Task Details View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				44B71F1921C859DE00449EF6 /* actionChoice.m */,
 				08E1EA0A18DB057900F9052F /* Header View */,
 				08E1EA0E18DB057900F9052F /* TaskDetailsViewController.h */,
 				08E1EA0F18DB057900F9052F /* TaskDetailsViewController.m */,
@@ -5079,6 +5082,7 @@
 				0876A05718D9A0A80035370A /* ProgressView.m in Sources */,
 				272CC7BD19466B680009FADA /* MapViewController.m in Sources */,
 				73B9584517A6750F0099FB84 /* LoginManager.m in Sources */,
+				44B71F1A21C859DE00449EF6 /* actionChoice.m in Sources */,
 				0876A04718D99FF60035370A /* NodePickerListViewController.m in Sources */,
 				73B078A0189AB4F800D02C43 /* Reachability.m in Sources */,
 				2BFD96AC1C88643D00FDABA5 /* UnderlayViewController.m in Sources */,
