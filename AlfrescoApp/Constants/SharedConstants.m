@@ -19,7 +19,7 @@
 #import "SharedConstants.h"
 
 // Shared Group
-NSString * const kSharedAppGroupIdentifier = @"group.com.alfresco.mobile";
+NSString * const kSharedAppGroupIdentifier = @"group.ks2.mobileApplication"; //FKA
 
 // App Configuration
 NSString * const kAppConfigurationFileLocationOnServer = @"Mobile/configuration.json";
@@ -39,6 +39,6 @@ NSString * const kRemainingAttemptsKey = @"RemainingAttemptsKey";
 
 NSString * const kSettingsSecurityUsePasscodeLockIdentifier = @"SettingsSecurityUsePasscodeLockIdentifier";
 
-NSString * const kAlfrescoMobileGroup = @"group.com.alfresco.mobile";
+NSString * const kAlfrescoMobileGroup = @"group.ks2.mobileApplication"; //FKA
 NSString * const kShouldResetEntireAppKey = @"ShouldResetEntireApp";
 NSString * const kIsAppFirstLaunch = @"IsAppFirstLaunch";

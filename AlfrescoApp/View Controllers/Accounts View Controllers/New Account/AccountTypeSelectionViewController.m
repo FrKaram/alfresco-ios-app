@@ -22,10 +22,10 @@
 #import "RealmSyncManager.h"
 #import "AccountDetailsViewController.h"
 
-static NSInteger const kNumberAccountTypes = 2;
+static NSInteger const kNumberAccountTypes = 1; //Display only on prem connection
 static NSInteger const kNumberOfTypesPerSection = 1;
 
-static NSInteger const kCloudSectionNumber = 0;
+static NSInteger const kCloudSectionNumber = -1;
 
 static CGFloat const kAccountTypeTitleFontSize = 18.0f;
 static CGFloat const kAccountTypeCellRowHeight = 66.0f;
@@ -100,7 +100,7 @@ static CGFloat const kAccountTypeCellRowHeight = 66.0f;
     }
     
     cell.textLabel.font = [UIFont boldSystemFontOfSize:kAccountTypeTitleFontSize];
-    if (indexPath.section == 0)
+    if (indexPath.section == kCloudSectionNumber)
     {
         cell.imageView.image = [[UIImage imageNamed:@"account-type-cloud.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.textLabel.text = NSLocalizedString(@"accounttype.cloud", @"Alfresco in the Cloud");
